@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Install dependencies
+echo "Installing dependecies for Sink"
+pacman -S --noconfirm inotify-tools rsync
+
+# Install Sink scripts
+echo "Installing Sink"
+cp notify /bin/
+cp sink /bin/
+chmod 555 /bin/sink
+cp -R Sink /etc/
+cp sink.service /lib/systemd/system/
+alias sink='/bin/sink'
+
+# Enable and start Sink service
+echo "Enabling and starting Sink service"
+systemctl enable sink.service
+systemctl start sink.service
+
+echo "Done!"

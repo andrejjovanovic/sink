@@ -1,0 +1,13 @@
+[Unit]
+Description=Sink v.0.0.1
+After=network.target
+
+[Service]
+ExecStart=/bin/sh /bin/notify
+SyslogIdentifier=Sink
+StandardOutput=syslog
+StandardError=syslog
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

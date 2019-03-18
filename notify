@@ -1,0 +1,18 @@
+#!/bin/bash
+
+source /etc/Sink/notify.conf
+
+inotifywait -r -m -e $NOTIFY $DIR_PATH | 
+while read -r FILEPATH event; do
+    for FILTER_NAME in "${FILTERARR[@]}"; 
+    do 
+        if [[ $FILEPATH == *$FILTER_NAME* ]];
+        then
+            source /etc/Sink/$FILTER_NAME.profile
+	    for DEST_PATH in "${DESTARR[@]}";
+		do
+            	  rsync -avz $SOURCE_PATH $DEST_PATH --delete
+                done
+        fi
+    done
+done
