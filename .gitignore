@@ -4,4 +4,4 @@ install
 *.service
 notify
 sink.service
-Sink/*
+Sink/
