@@ -1,5 +1,5 @@
 sink
-*/
+*/**
 install
 *.service
 notify
