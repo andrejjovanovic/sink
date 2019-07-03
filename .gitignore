@@ -2,3 +2,4 @@ sink
 */
 install
 *.service
+notify
